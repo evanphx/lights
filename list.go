@@ -17,7 +17,13 @@ func (o *ListCommand) Execute(args []string) error {
 	}
 
 	for _, light := range lights {
-		fmt.Printf("%s: %s\n", light.Id, light.Name)
+		state := "off"
+
+		if light.State.On {
+			state = "on"
+		}
+
+		fmt.Printf("%s: %s - %s\n", light.Id, light.Name, state)
 	}
 
 	return nil
